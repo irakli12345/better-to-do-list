@@ -1,58 +1,57 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+  <div class="main">
+    <div class="lead-text-wrapper">
+      <h1 class="leading-text">{{ msg }}</h1>
+    </div>
+    <div class="todos"></div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: "HelloWorld",
   props: {
     msg: String
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
+.main {
 }
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
+.leading-text {
+  margin-top: 1rem;
+  font-size: 16px;
+  background-color: rgba(42, 70, 255, 0.75);
+  color: white;
+  padding: 0.5rem 2rem;
   display: inline-block;
-  margin: 0 10px;
+  border-radius: 2rem;
 }
-a {
-  color: #42b983;
+.leading-text:hover {
+  background-color: rgba(49, 73, 230, 0.9);
+}
+.todos {
+  width: 90vw;
+  height: 60vh;
+  background-color: rgba(190, 248, 113, 0.5);
+  margin: auto;
+  margin-top: 2rem;
+  border-radius: 4rem;
+}
+@media screen and (min-width: 720px) {
+  .leading-text {
+    font-size: 18px;
+  }
+  .todos {
+    width: 80vw;
+  }
+}
+
+@media screen and (min-width: 1080px) {
+  .leading-text {
+    font-size: 26px;
+  }
 }
 </style>
