@@ -58,7 +58,9 @@ export default {
   justify-content: space-around;
   align-items: center;
 }
-
+* {
+  font-family: "Baloo 2";
+}
 @media screen and (min-width: 720px) {
   .leading-text {
     font-size: 18px;
