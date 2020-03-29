@@ -1,0 +1,6 @@
+{
+  "movies": [
+    { "title": "Sopranos", "genre": "Masterpiece" },
+    { "title": "HIMYM", "genre": "comedy" }
+  ]
+}
