@@ -2,9 +2,10 @@
   <div class="todo">
     <div class="heading">
       <i class="fas fa-minus-circle"></i>
-      <p>{{movie.title}}</p>
+      <p>{{todo.taskName}}</p>
       <i class="far fa-calendar"></i>
     </div>
+    <div class="description">{{todo.description}}</div>
   </div>
 </template>
 
@@ -12,7 +13,7 @@
 <script>
 export default {
   name: "Todo",
-  props: ["movie"],
+  props: ["todo"],
   data: function() {
     return { subtasks: [] };
   }
@@ -29,7 +30,7 @@ h1 {
   border-radius: 2rem;
 }
 .fa-minus-circle {
-  background: rgba(255, 0, 0, 0.63);
+  background: red;
   border-radius: 50%;
   border: 1px solid rgba(255, 0, 0, 0.63);
 }
@@ -38,18 +39,24 @@ h1 {
   border: 1px solid red;
 }
 .heading {
-  border-bottom: 2px solid red;
   padding: 0.3rem 1.5rem;
-  max-height: 15%;
+  height: 15%;
   display: flex;
   justify-content: space-between;
 }
 .heading p {
-  font-size: 12px;
+  font-size: 18px;
   font-weight: bold;
   color: white;
   max-width: 40%;
   overflow: hidden;
-  max-height: 1rem;
+  max-height: 2rem;
+}
+.description {
+  border: 1px solid red;
+  margin: 1rem;
+  height: 60%;
+  font-weight: bold;
+  color: white;
 }
 </style>

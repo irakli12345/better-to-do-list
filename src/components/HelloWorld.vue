@@ -4,7 +4,7 @@
       <h1 class="leading-text">{{ msg }}</h1>
     </div>
     <div class="todos">
-      <Todo v-for="movie in movieList" :key="movie.title" :movie="movie"></Todo>
+      <Todo v-for="todo in todoList" :key="todo.taskName" :todo="todo"></Todo>
     </div>
     <AddTask></AddTask>
   </div>
@@ -21,14 +21,13 @@ export default {
   },
   data: function() {
     return {
-      todoList: [],
-      movieList: []
+      todoList: []
     };
   },
   mounted: function() {
-    fetch("http://localhost:3000/movies")
+    fetch("http://localhost:3000/todos")
       .then(res => res.json())
-      .then(data => (this.movieList = data));
+      .then(data => (this.todoList = data));
   }
 };
 </script>
