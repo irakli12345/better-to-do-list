@@ -4,7 +4,12 @@
       <h1 class="leading-text">{{ msg }}</h1>
     </div>
     <div class="todos">
-      <Todo v-for="todo in todoList" :key="todo.taskName" :todo="todo"></Todo>
+      <Todo
+        v-for="(todo, index) in todoList"
+        :key="todo.taskName"
+        :todo="todo"
+        @deleteTodo="todoList.splice(index, 1)"
+      ></Todo>
     </div>
     <AddTask></AddTask>
   </div>
@@ -23,6 +28,11 @@ export default {
     return {
       todoList: []
     };
+  },
+  methods: {
+    boo: function() {
+      console.log("boo");
+    }
   },
   mounted: function() {
     fetch("http://localhost:3000/todos")
@@ -60,6 +70,7 @@ export default {
 * {
   font-family: "Baloo 2";
 }
+
 @media screen and (min-width: 720px) {
   .leading-text {
     font-size: 18px;

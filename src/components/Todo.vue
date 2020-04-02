@@ -1,11 +1,21 @@
 <template>
   <div class="todo">
     <div class="heading">
-      <i class="fas fa-minus-circle"></i>
+      <span @click="$emit('deleteTodo')">
+        <i class="fas fa-minus-circle"></i>
+      </span>
       <p>{{todo.taskName}}</p>
       <i class="far fa-calendar"></i>
     </div>
-    <div class="description">{{todo.description}}</div>
+    <div class="description">
+      {{todo.description}}
+      <ul>
+        <li v-for="bullet in todo.bullets" :key="bullet">
+          <span class="bullet-icon">•</span>
+          {{" " + bullet}}
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -48,15 +58,19 @@ h1 {
   font-size: 18px;
   font-weight: bold;
   color: white;
-  max-width: 40%;
   overflow: hidden;
   max-height: 2rem;
+  flex-grow: 4;
 }
 .description {
-  border: 1px solid red;
   margin: 1rem;
   height: 60%;
   font-weight: bold;
   color: white;
+  font-size: 14px;
+  overflow: hidden;
+}
+.bullet-icon {
+  font-size: 20px;
 }
 </style>

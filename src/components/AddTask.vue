@@ -1,32 +1,29 @@
 <template>
-  <div>
+  <div style="height: 100vh">
     <form @submit.prevent="handleSubmit">
       <label for="taskname">Task Name</label>
       <input type="text" id="taskname" v-model="todo.taskName" />
       <label for="desc">Description of the Task</label>
 
       <textarea id="desc" v-model="todo.description"></textarea>
-      <button class="bulletbutton" @click="showbulletinput = !showbulletinput">Add Bullet Points</button>
-      <div v-if="showbulletinput">
+      <span class="bulletbutton" @click="showbulletinput = !showbulletinput">Add Bullet Points</span>
+      <div class="bulletinput" v-if="showbulletinput">
         <input type="text" id="addbullet" v-model="bulletpoint" />
-        <button
-          class="bulletbutton"
-          style="width: 20%; margin-left: 1rem"
-          @click="addBulletpoint"
-        >Add</button>
+        <span class="bulletbutton" @click="addBulletpoint">Add</span>
         <ul>
           <h3>Bullets added:</h3>
-          <li v-for="bullet in todo.bullets" :key="bullet">
-            <u>{{bullet}}</u>
+          <li v-for="(bullet, index) in todo.bullets" :key="bullet">
+            <u>
+              {{bullet}}
+              <span @click="todo.bullets.splice(index, 1)">
+                <i class="fas fa-minus"></i>
+              </span>
+            </u>
           </li>
         </ul>
       </div>
       <button type="submit">Add Task</button>
     </form>
-    <div v-if="showtask">
-      <h1>{{todo.taskName}}</h1>
-      <h1>{{todo.description}}</h1>
-    </div>
   </div>
 </template>
 <script>
@@ -53,6 +50,8 @@ export default {
         },
         body: JSON.stringify(this.todo)
       });
+      this.todo = { taskName: "", description: "", bullets: [] };
+      this.bulletpoint = "";
     },
     addBulletpoint() {
       this.todo.bullets.push(this.bulletpoint);
@@ -85,22 +84,48 @@ form {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border: 2px solid red;
+  height: 100vh;
 }
 form > * {
   width: 35%;
   margin-top: 1rem;
 }
-
+ul {
+  list-style: none;
+}
 .bulletbutton {
   background-color: rgb(64, 185, 64);
   border: none;
-  width: 10%;
+  width: 30%;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  font-family: "Baloo 2";
+  margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 .bulletbutton:hover {
   background-color: rgb(5, 184, 5);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  font-family: "Baloo 2";
+  margin-bottom: 1rem;
 }
-ul {
-  list-style: none;
+.bulletinput {
+  max-height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  align-items: center;
+}
+.bulletinput input {
+  width: 80%;
+}
+.fa-minus {
+  color: red;
 }
 @media screen and (min-width: 1080px) {
   form > * {
@@ -110,6 +135,9 @@ ul {
 @media screen and (min-width: 720px) {
   form > * {
     width: 25%;
+  }
+  .bulletbutton {
+    width: 10%;
   }
 }
 </style>
