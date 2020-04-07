@@ -34,8 +34,8 @@ h1 {
   font-size: 50px;
 }
 .todo {
-  flex-basis: 40%;
-  height: 60%;
+  flex-basis: 80%;
+  height: 22%;
   background-color: rgba(42, 70, 255, 0.5);
   border-radius: 2rem;
 }
@@ -72,5 +72,24 @@ h1 {
 }
 .bullet-icon {
   font-size: 20px;
+}
+
+@media screen and (min-width: 360px) {
+  .todo {
+    height: 22%;
+    flex-basis: 60%;
+  }
+}
+@media screen and (min-width: 720px) {
+  .todo {
+    height: 40%;
+    flex-basis: 40%;
+  }
+}
+@media screen and (min-width: 1080px) {
+  .todo {
+    height: 60%;
+    flex-basis: 20%;
+  }
 }
 </style>

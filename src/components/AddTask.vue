@@ -84,8 +84,6 @@ form {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 2px solid red;
-  height: 100vh;
 }
 form > * {
   width: 35%;

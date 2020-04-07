@@ -58,12 +58,13 @@ export default {
 }
 .todos {
   width: 90vw;
-  height: 60vh;
+  height: 160vh;
   background-color: rgba(190, 248, 113, 0.5);
   margin: auto;
   margin-top: 2rem;
   border-radius: 4rem;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
 }
@@ -71,12 +72,28 @@ export default {
   font-family: "Baloo 2";
 }
 
+@media screen and (min-width: 360px) {
+  .todos {
+    height: 125vh;
+  }
+}
 @media screen and (min-width: 720px) {
   .leading-text {
     font-size: 18px;
   }
   .todos {
     width: 80vw;
+  }
+  .todos {
+    width: 90vw;
+    height: 80vh;
+    background-color: rgba(190, 248, 113, 0.5);
+    margin: auto;
+    margin-top: 2rem;
+    border-radius: 4rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
   }
 }
 
