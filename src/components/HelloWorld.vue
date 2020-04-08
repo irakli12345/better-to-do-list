@@ -11,6 +11,14 @@
         @deleteTodo="todoList.splice(index, 1)"
       ></Todo>
     </div>
+    <div class="pagination">
+      <span
+        @click="prevPage"
+        :class="[pageNumber == 1 ? 'disabled' : '' , 'prevpage']"
+      >Previous Page</span>
+      You're on Page {{pageNumber}}
+      <span class="nextpage" @click.prevent="nextPage">Next Page</span>
+    </div>
     <AddTask></AddTask>
   </div>
 </template>
@@ -26,12 +34,16 @@ export default {
   },
   data: function() {
     return {
-      todoList: []
+      todoList: [],
+      pageNumber: 1
     };
   },
   methods: {
-    boo: function() {
-      console.log("boo");
+    nextPage: function() {
+      this.pageNumber++;
+    },
+    prevPage: function() {
+      this.pageNumber--;
     }
   },
   mounted: function() {
@@ -44,6 +56,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.disabled {
+  background-color: grey !important;
+  pointer-events: none;
+}
 .leading-text {
   margin-top: 1rem;
   font-size: 16px;
@@ -71,7 +87,31 @@ export default {
 * {
   font-family: "Baloo 2";
 }
-
+.pagination {
+  background-color: rgba(49, 73, 230, 0.9);
+  color: white;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin: 2rem;
+}
+.prevpage {
+  background-color: rgba(30, 155, 117, 0.9);
+  color: white;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  margin: 1rem;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+.nextpage {
+  background-color: rgba(22, 189, 31, 0.9);
+  color: white;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  margin: 1rem;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
 @media screen and (min-width: 360px) {
   .todos {
     height: 125vh;
