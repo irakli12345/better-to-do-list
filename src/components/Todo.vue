@@ -10,10 +10,7 @@
     <div class="description">
       {{todo.description}}
       <ul>
-        <li v-for="bullet in todo.bullets" :key="bullet">
-          <span class="bullet-icon">•</span>
-          {{" " + bullet}}
-        </li>
+        <li v-for="bullet in todo.bullets" :key="bullet">- {{" " + bullet}}</li>
       </ul>
     </div>
   </div>
@@ -53,6 +50,7 @@ h1 {
   height: 15%;
   display: flex;
   justify-content: space-between;
+  font-weight: 500;
 }
 .heading p {
   font-size: 18px;
@@ -65,13 +63,19 @@ h1 {
 .description {
   margin: 1rem;
   height: 60%;
-  font-weight: bold;
+  font-weight: 400;
   color: white;
-  font-size: 14px;
+  font-size: 11px;
   overflow: hidden;
+}
+li > span {
+  max-height: 50%;
 }
 .bullet-icon {
   font-size: 20px;
+}
+li {
+  padding: 0;
 }
 
 @media screen and (min-width: 360px) {
@@ -84,6 +88,9 @@ h1 {
   .todo {
     height: 40%;
     flex-basis: 40%;
+  }
+  .description {
+    font-size: 13px;
   }
 }
 @media screen and (min-width: 1080px) {

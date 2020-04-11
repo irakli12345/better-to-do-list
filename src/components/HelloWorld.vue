@@ -5,19 +5,23 @@
     </div>
     <div class="todos">
       <Todo
-        v-for="(todo, index) in todoList"
+        v-for="(todo, index) in todoList.slice((pageNumber * 4)-4, pageNumber * 4)"
         :key="todo.taskName"
         :todo="todo"
         @deleteTodo="todoList.splice(index, 1)"
       ></Todo>
     </div>
+    <h1 style="color:red" v-if="runoutofpages">No more todos</h1>
     <div class="pagination">
       <span
         @click="prevPage"
         :class="[pageNumber == 1 ? 'disabled' : '' , 'prevpage']"
       >Previous Page</span>
       You're on Page {{pageNumber}}
-      <span class="nextpage" @click.prevent="nextPage">Next Page</span>
+      <span
+        @click.prevent="nextPage"
+        :class="[runoutofpages ? 'disabled' : '' , 'nextpage']"
+      >Next Page</span>
     </div>
     <AddTask></AddTask>
   </div>
@@ -46,6 +50,14 @@ export default {
       this.pageNumber--;
     }
   },
+  computed: {
+    runoutofpages: function() {
+      return (
+        this.todoList.slice(this.pageNumber * 4 - 4, this.pageNumber * 4)
+          .length < 4
+      );
+    }
+  },
   mounted: function() {
     fetch("http://localhost:3000/todos")
       .then(res => res.json())
@@ -68,6 +80,7 @@ export default {
   padding: 0.5rem 2rem;
   display: inline-block;
   border-radius: 2rem;
+  font-weight: 600;
 }
 .leading-text:hover {
   background-color: rgba(49, 73, 230, 0.9);
@@ -87,13 +100,7 @@ export default {
 * {
   font-family: "Baloo 2";
 }
-.pagination {
-  background-color: rgba(49, 73, 230, 0.9);
-  color: white;
-  padding: 1rem;
-  border-radius: 1rem;
-  margin: 2rem;
-}
+
 .prevpage {
   background-color: rgba(30, 155, 117, 0.9);
   color: white;
@@ -112,9 +119,34 @@ export default {
   -moz-user-select: none;
   -webkit-user-select: none;
 }
+.pagination {
+  background-color: rgba(49, 73, 230, 0.9);
+  color: white;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 70%;
+  margin: auto;
+}
 @media screen and (min-width: 360px) {
   .todos {
     height: 125vh;
+  }
+}
+@media screen and (min-width: 480px) {
+  .pagination {
+    background-color: rgba(49, 73, 230, 0.9);
+    color: white;
+    padding: 1rem;
+    border-radius: 1rem;
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
   }
 }
 @media screen and (min-width: 720px) {

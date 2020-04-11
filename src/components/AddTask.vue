@@ -1,9 +1,9 @@
 <template>
   <div style="height: 100vh">
     <form @submit.prevent="handleSubmit">
-      <label for="taskname">Task Name</label>
+      <label for="taskname" class="taskNameLabel">Task Name</label>
       <input type="text" id="taskname" v-model="todo.taskName" />
-      <label for="desc">Description of the Task</label>
+      <label for="desc" class="descLabel">Description of the Task</label>
 
       <textarea id="desc" v-model="todo.description"></textarea>
       <span class="bulletbutton" @click="showbulletinput = !showbulletinput">Add Bullet Points</span>
@@ -60,6 +60,14 @@ export default {
 };
 </script>
 <style>
+.taskNameLabel {
+  border-radius: 1rem;
+  background-color: rgba(255, 255, 255, 0.473);
+}
+.descLabel {
+  border-radius: 1rem;
+  background-color: rgba(255, 255, 255, 0.473);
+}
 input,
 textarea {
   border-radius: 1rem;
