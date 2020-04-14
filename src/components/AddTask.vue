@@ -9,9 +9,13 @@
       <span class="bulletbutton" @click="showbulletinput = !showbulletinput">Add Bullet Points</span>
       <div class="bulletinput" v-if="showbulletinput">
         <input type="text" id="addbullet" v-model="bulletpoint" />
-        <span class="bulletbutton" @click="addBulletpoint">Add</span>
+        <span
+          :class="[todo.bullets.length == 3 ? 'disabled' : '', 'bulletbutton']"
+          @click="addBulletpoint"
+        >Add</span>
         <ul>
           <h3>Bullets added:</h3>
+          <h3 v-show="todo.bullets.length == 3 ">Max 3 Bullets allowed</h3>
           <li v-for="(bullet, index) in todo.bullets" :key="bullet">
             <u>
               {{bullet}}
@@ -60,13 +64,17 @@ export default {
 };
 </script>
 <style>
+.disabled {
+  background-color: grey !important;
+  pointer-events: none;
+}
 .taskNameLabel {
   border-radius: 1rem;
-  background-color: rgba(255, 255, 255, 0.473);
+  background-color: rgba(255, 255, 255, 0.781);
 }
 .descLabel {
   border-radius: 1rem;
-  background-color: rgba(255, 255, 255, 0.473);
+  background-color: rgba(255, 255, 255, 0.781);
 }
 input,
 textarea {

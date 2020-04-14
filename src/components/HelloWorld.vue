@@ -3,9 +3,27 @@
     <div class="lead-text-wrapper">
       <h1 class="leading-text">{{ msg }}</h1>
     </div>
-    <div class="todos">
+    <input
+      type="text"
+      class="searchbar"
+      placeholder="Search through the contents"
+      v-model="searchkeyword"
+    />
+    <div class="todos" v-if="!searchkeyword">
       <Todo
         v-for="(todo, index) in todoList.slice((pageNumber * 4)-4, pageNumber * 4)"
+        :key="todo.taskName"
+        :todo="todo"
+        @deleteTodo="todoList.splice(index, 1)"
+      ></Todo>
+    </div>
+    <div v-else class="todos">
+      <Todo
+        v-for="(todo, index) in todoList.filter(
+        todo =>
+          todo.taskName.indexOf(this.searchkeyword) != -1 ||
+          todo.description.indexOf(this.searchkeyword) != -1
+      ).slice((pageNumber * 4)-4, pageNumber * 4)"
         :key="todo.taskName"
         :todo="todo"
         @deleteTodo="todoList.splice(index, 1)"
@@ -23,7 +41,10 @@
         :class="[runoutofpages ? 'disabled' : '' , 'nextpage']"
       >Next Page</span>
     </div>
-    <AddTask></AddTask>
+    <button @click="addTaskClicked = !addTaskClicked">Add New Task</button>
+    <div v-show="addTaskClicked">
+      <AddTask></AddTask>
+    </div>
   </div>
 </template>
 
@@ -39,7 +60,9 @@ export default {
   data: function() {
     return {
       todoList: [],
-      pageNumber: 1
+      pageNumber: 1,
+      addTaskClicked: false,
+      searchkeyword: null
     };
   },
   methods: {
@@ -130,6 +153,12 @@ export default {
   justify-content: center;
   width: 70%;
   margin: auto;
+}
+.searchbar {
+  width: 60%;
+  margin-top: 1rem;
+  background-color: transparent;
+  border: 2px solid rgba(255, 0, 0, 0.315);
 }
 @media screen and (min-width: 360px) {
   .todos {
