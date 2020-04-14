@@ -59,6 +59,7 @@ export default {
     },
     addBulletpoint() {
       this.todo.bullets.push(this.bulletpoint);
+      this.bulletpoint = "";
     }
   }
 };

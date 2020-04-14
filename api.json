@@ -1,43 +1,64 @@
 {
   "todos": [
     {
-      "taskName": "Till i Collapse",
-      "description": "boo",
+      "taskName": "Practice Vue",
+      "description": "Start brand new vue CLi project and practice things you read about yesterday, specifically:",
+      "bullets": [
+        "maintaining vue state",
+        "replacing an array in vue data",
+        "displaying filtered results"
+      ],
       "id": 1
     },
     {
-      "taskName": "Clean the House",
-      "description": "Start with mopping the floors, then do dishes, then wash your dirty laundry bitch",
+      "taskName": "Work out",
+      "description": "Work out some of the muscles that you haven't yet",
+      "bullets": [
+        "Dont forget to stretch"
+      ],
       "id": 2
     },
     {
-      "taskName": "Clean the haus",
-      "description": "Bom bum bum, tik tik",
-      "bullets": [
-        "tuk tak",
-        "bru lal a "
-      ],
+      "taskName": "Listen to music",
+      "description": "Chillax and listen to music, rap some, dance some.",
+      "bullets": [],
       "id": 3
     },
     {
-      "taskName": "fdgfd",
-      "description": "gfadfgbdghbdfhg gfdxfg sfdhgnbfsghfgh hnbgdhnjfhjgn jhngdjhndhfjsf mjgdhjdfghja ty thyy rtyh rghnscv fbnfhsgh yj  jthjetgjh gyjrytj jfgjehfe jetyhjnty",
+      "taskName": "Get groceries",
+      "description": "Get healthy food from the store. Chicken breasts for after-workout diet.",
       "bullets": [],
       "id": 4
     },
     {
-      "taskName": "fdsfVS",
-      "description": "gfadfgbdghbdfhg gfdxfg sfdhgnbfsghfgh hnbgdhnjfhjgn jhngdjhndhfjsf mjgdhjdfghja ty thyy rtyh rghnscv fbnfhsgh yj jthjetgjh gyjrytj jfgjehfe jetyhjnty hbgdfahgt qjyru tuit6i766t7i  gfadfgbdghbdfhg gfdxfg sfdhgnbfsghfgh hnbgdhnjfhjgn jhngdjhndhfjsf mjgdhjdfghja ty thyy rtyh rghnscv fbnfhsgh yj jthjetgjh gyjrytj jfgjehfe jetyhjnty hbgdfahgt qjyru tuit6i766t7i gfadfgbdghbdfhg gfdxfg sfdhgnbfsghfgh hnbgdhnjfhjgn jhngdjhndhfjsf mjgdhjdfghja ty thyy rtyh rghnscv fbnfhsgh yj jthjetgjh gyjrytj jfgjehfe jetyhjnty hbgdfahgt qjyru tuit6i766t7i ",
+      "taskName": "Help your uncle",
+      "description": "He needs some kind of help with computer, when you're free, help him",
       "bullets": [],
       "id": 5
     },
     {
-      "taskName": "bru ha ha ",
-      "description": " gfdsgf ",
-      "bullets": [
-        "fdsfd"
-      ],
+      "taskName": "Hydrate",
+      "description": "don't forget to hydrate, it is also important for your workout gains",
+      "bullets": [],
       "id": 6
+    },
+    {
+      "taskName": "Wash dishes",
+      "description": "Wash dishes until you have too much to wash all at once. ",
+      "bullets": [],
+      "id": 7
+    },
+    {
+      "taskName": "Hit the bath",
+      "description": "Go to store and get a shampoo, and have a bath. It's been a while, dude",
+      "bullets": [],
+      "id": 8
+    },
+    {
+      "taskName": "Start new projects",
+      "description": "Start new vue projects, practice things you haven't had chance to practice before",
+      "bullets": [],
+      "id": 9
     }
   ]
 }
